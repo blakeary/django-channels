@@ -4,6 +4,8 @@
 
 This Django project features a live dashboard that displays real-time Bitcoin prices. It utilizes Django Channels and WebSockets for real-time data streaming, and fetches Bitcoin price data from the CoinGecko API. The project is configured to use Redis as the channel layer for handling WebSocket connections.
 
+![Example Dashboard](example.PNG)
+
 ## Setup and Installation
 
 ### Prerequisites
