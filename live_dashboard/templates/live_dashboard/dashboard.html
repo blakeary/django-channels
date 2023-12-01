@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Live Bitcoin Price Dashboard</title>
+    </head>
+    <body>
+        <h1>Live Bitcoin Price</h1>
+        <div id="bitcoin-price">Waiting for price update...</div>
+        <script>
+            const chatSocket = new WebSocket(
+                "ws://" + window.location.host + "/ws/dashboard/"
+            );
+
+            chatSocket.onmessage = function (e) {
+                console.log("WebSocket message received:", e);
+                const data = JSON.parse(e.data);
+                document.querySelector("#bitcoin-price").innerText =
+                    "Bitcoin Price: $" + data.price;
+            };
+
+            chatSocket.onclose = function (e) {
+                console.error("WebSocket closed unexpectedly");
+            };
+        </script>
+    </body>
+</html>
